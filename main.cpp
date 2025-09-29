@@ -14,13 +14,13 @@ int main() {
       "Meguro",       "Gotanda",   "Osaki",     "Shinagawa",    "Tamachi",
       "Hamamatsucho", "Shimbashi", "Yurakucho"};
 
-  printf("山手線の駅名一覧 : [1970年]\n");
+  printf("[山手線の駅名一覧 : 1970年]\n");
   for (list<const char *>::iterator it = yamanoteLineStations.begin();
        it != yamanoteLineStations.end(); ++it) {
     cout << *it << '\n';
   }
 
-  printf("\n山手線の駅名一覧 : [2019年]\n");
+  printf("\n[山手線の駅名一覧 : 2019年]\n");
   // 西日暮里駅を追加
   yamanoteLineStations.insert(next(yamanoteLineStations.begin(), 7),
                               "Nishi-Nippori");
@@ -29,7 +29,7 @@ int main() {
     cout << *it << '\n';
   }
 
-  printf("\n山手線の駅名一覧 : [2022年]\n");
+  printf("\n[山手線の駅名一覧 : 2022年]\n");
   // 高輪ゲートウェイ駅を追加
   yamanoteLineStations.insert(next(yamanoteLineStations.begin(), 25),
                               "Takanawa Gateway");
