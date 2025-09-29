@@ -1,5 +1,5 @@
 #include <iostream>
-#include <iterator> // std::next
+#include <iterator>
 #include <list>
 
 using namespace std;
