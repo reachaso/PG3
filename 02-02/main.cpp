@@ -12,17 +12,6 @@ int main() {
   // 50円)
   int recursion = 100;
 
-  //for (int i = 1; i <= workTime; ++i) {
-  //  printf("\n労働 %d 時間\n", i);
-  //  printf("一般的な賃金体系での給料 : %d\n", hourly_wage * i);
-  //  if (i == 1) {
-  //    printf("再帰的な賃金体系での給料 : %d\n", recursion);
-  //  } else {
-  //    recursion = recursion * 2 - 50; // 再帰的な計算を修正
-  //    printf("再帰的な賃金体系での給料 : %d\n", recursion);
-  //  }
-  //}
-
   for (int i = 1; i <= workTime; ++i) {
     printf("\n%dhour\n", i);
     printf("hourly_wage : %d\n", hourly_wage * i);
