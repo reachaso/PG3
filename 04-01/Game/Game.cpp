@@ -1,36 +1,24 @@
 #include "Game.h"
+#include "TitleScene/Title_Scene.h"
 #include <Novice.h>
+#include <memory>
 
-Game::Game() : currentScene_(kTitle) {}
+Game::Game() : currentScene_(std::make_unique<Title_Scene>()) {}
 
 void Game::Shutdown() {}
 
 void Game::Run(char* keys, char* preKeys) {
-  if (preKeys[DIK_SPACE] == 0 && keys[DIK_SPACE] != 0) {
-    if (currentScene_ == kTitle) {
-      currentScene_ = kGame;
-    } else if (currentScene_ == kGame) {
-      currentScene_ = kClear;
-    } else {
-      currentScene_ = kTitle;
-    }
+  if (!currentScene_) {
+    return;
   }
-
-  if (currentScene_ == kTitle) {
-    titleScene_.Update(keys, preKeys);
-  } else if (currentScene_ == kGame) {
-    gameScene_.Update(keys, preKeys);
-  } else {
-    clearScene_.Update(keys, preKeys);
+  std::unique_ptr<SceneBase> nextScene = currentScene_->Update(keys, preKeys);
+  if (nextScene) {
+    currentScene_ = std::move(nextScene);
   }
 }
 
 void Game::Render() {
-  if (currentScene_ == kTitle) {
-    titleScene_.Render();
-  } else if (currentScene_ == kGame) {
-    gameScene_.Render();
-  } else {
-    clearScene_.Render();
+  if (currentScene_) {
+    currentScene_->Render();
   }
 }

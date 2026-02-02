@@ -9,9 +9,17 @@ Bullet::Bullet(Vector2 pos) {
 
 Bullet::~Bullet() {}
 
-void Bullet::Move() {}
+void Bullet::Move() {
+  if (!isActive_) {
+    return;
+  }
+  position_.y -= speed_;
+  if (position_.y + bulletHalfSize_.y < 0.0f) {
+    isActive_ = false;
+  }
+}
 
-void Bullet::Render() {
+void Bullet::Render() const {
   if (isActive_) {
     Novice::DrawBox(static_cast<int>(position_.x - bulletHalfSize_.x),
                     static_cast<int>(position_.y - bulletHalfSize_.y),
@@ -20,3 +28,11 @@ void Bullet::Render() {
                     kFillModeSolid);
   }
 }
+
+bool Bullet::IsActive() const { return isActive_; }
+
+void Bullet::SetActive(bool isActive) { isActive_ = isActive; }
+
+Vector2 Bullet::GetPosition() const { return position_; }
+
+Vector2 Bullet::GetHalfSize() const { return bulletHalfSize_; }

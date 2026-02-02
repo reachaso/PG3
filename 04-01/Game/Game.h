@@ -1,7 +1,6 @@
 #pragma once
-#include "Scene/ClearScene/ClearScene.h"
-#include "Scene/GameScene/GameScene.h"
-#include "Scene/TitleScene/TitleScene.h"
+#include "Scene/SceneBase.h"
+#include <memory>
 
 class Game {
 public:
@@ -11,14 +10,5 @@ public:
   void Render();
 
 private:
-  enum SceneType {
-    kTitle,
-    kGame,
-    kClear
-  };
-
-  SceneType currentScene_;
-  TitleScene titleScene_;
-  GameScene gameScene_;
-  ClearScene clearScene_;
+  std::unique_ptr<SceneBase> currentScene_;
 };

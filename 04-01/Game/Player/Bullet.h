@@ -7,7 +7,12 @@ public:
   Bullet(Vector2 pos);
   ~Bullet();
   void Move();
-  void Render();
+  void Render() const;
+
+  bool IsActive() const;
+  void SetActive(bool isActive);
+  Vector2 GetPosition() const;
+  Vector2 GetHalfSize() const;
 
 private:
   Vector2 position_;
