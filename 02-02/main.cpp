@@ -18,7 +18,7 @@ int main() {
 
     printf("\n%dhour\n", i);
     printf("hourly_wage (per hour) : %d\n", hourly_wage);
-    printf("recursion (per hour) : %d\n", recursionHourly);
+    printf("時給er hour) : %d\n", recursionHourly);
     printf("hourly_wage (total) : %d\n", normalTotal);
     printf("recursion (total) : %d\n", recursionTotal);
 
