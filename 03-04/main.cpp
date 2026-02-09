@@ -1,16 +1,20 @@
 #include "area/Circle.h"
+#include "area/IShape.h"
 #include "area/Rectangle.h"
+#include <memory>
+#include <vector>
 
 using namespace std;
 
 int main() {
-  Circle circle(5.0);
-  circle.Size();
-  circle.Draw();
+  vector<unique_ptr<IShape>> shapes;
+  shapes.emplace_back(make_unique<Circle>(5.0f));
+  shapes.emplace_back(make_unique<Rectangle>(4.0f, 3.0f));
 
-  Rectangle rectangle(4.0, 3.0);
-  rectangle.Size();
-  rectangle.Draw();
+  for (auto& shape : shapes) {
+    shape->Size();
+    shape->Draw();
+  }
 
   return 0;
 }
