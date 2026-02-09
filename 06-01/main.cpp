@@ -1,14 +1,17 @@
-#include <windows.h>
+#include <iostream>
+#include <thread>
 
 using namespace std;
 
 int main() {
 
-#ifdef _WIN32
-  SetConsoleOutputCP(CP_UTF8);
-  SetConsoleCP(CP_UTF8);
-#endif
+  thread t1([]() { printf("thread1\n"); });
+  thread t2([]() { printf("thread2\n"); });
+  thread t3([]() { printf("thread3\n"); });
+
+  t1.join();
+  t2.join();
+  t3.join();
 
   return 0;
 }
-
